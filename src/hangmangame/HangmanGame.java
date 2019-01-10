@@ -7,6 +7,7 @@ package hangmangame;
 
 import hangmangame.game.WordGuessGame;
 import hangmangame.player.Player;
+import hangmangame.views.View;
 
 /**
  *
@@ -19,11 +20,14 @@ public class HangmanGame {
      */
     public static void main(String[] args) {
         String[] words = { "test" };
-        WordGuessGame hangman = new WordGuessGame(words);
+        View view;
+        WordGuessGame hangman = new WordGuessGame(words, 6);
         Player humanPlayer = new Player(true, false);
-        Player cpuPlayer = new Player(false, true);
         hangman.addPlayer(humanPlayer);
-        hangman.addPlayer(cpuPlayer);
+        view = new View(hangman);
+        System.out.println(view.getIntro());
+        System.out.println(view.getCurrentGuessView());
+        System.out.println(view.getGuessesLeftView());
         while (true != hangman.isGamever()) {
             // TODO: add logic
         }
