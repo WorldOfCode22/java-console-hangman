@@ -18,18 +18,20 @@ public class View {
         this.game = game;
     }
     
-    public String getIntro() {
-        return "Welcom to Hangman. A word has been selected can you guess it";
+    public void printIntro() {
+        System.out.println("Welcom to Hangman. A word has been selected can you guess it");
     }
     
-    public String getCurrentGuessView() {
-        return "Current Guess: " + game.getTurnsTaken();
+    public void printCurrentGuessView() {
+        System.out.println("Current Guess: " + game.getTurnsTaken());
     }
     
-    public String getGuessesLeftView() {
-        return "Guesses Left (Inculding Current Guess): " + (game.getTurnsToGuess() - game.getTurnsTaken());
+    public void printGuessesLeftView() {
+        System.out.println("Guesses Left (Inculding Current Guess): " + (game.getTurnsToGuess() - game.getTurnsTaken()));
     }
     
-    // public String getDashesView() { }
+    public void printGuessStatus() { 
+        System.out.println(this.game.getGuessStatus());
+    }
     
 }

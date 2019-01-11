@@ -5,6 +5,7 @@
  */
 package hangmangame;
 
+import hangmangame.exceptions.InvalidInputException;
 import hangmangame.game.WordGuessGame;
 import hangmangame.player.Player;
 import hangmangame.views.View;
@@ -25,11 +26,17 @@ public class HangmanGame {
         Player humanPlayer = new Player(true, false);
         hangman.addPlayer(humanPlayer);
         view = new View(hangman);
-        System.out.println(view.getIntro());
-        System.out.println(view.getCurrentGuessView());
-        System.out.println(view.getGuessesLeftView());
+        view.printIntro();
         while (true != hangman.isGamever()) {
-            // TODO: add logic
+            try {
+                view.printCurrentGuessView();
+                view.printGuessesLeftView();
+                view.printGuessStatus();
+                hangman.guess();
+                hangman.endTurn();
+            } catch (InvalidInputException e) {
+                System.out.print("Invalid Input");
+            }
         }
     }
     
